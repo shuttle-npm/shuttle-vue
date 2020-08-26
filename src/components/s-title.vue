@@ -1,7 +1,9 @@
 <script>
 export default {
     name: 'STitle', // vue component name
-    props: ['text']
+    props: {
+        text: String
+    }
 };
 </script>
 
