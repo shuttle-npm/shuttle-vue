@@ -3,5 +3,5 @@ export default {};
 </script>
 
 <template>
-  <s-title text="s-title" />
+  <s-title text="Title" />
 </template>

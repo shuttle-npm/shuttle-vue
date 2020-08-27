@@ -2,6 +2,7 @@
 import "./assets/bootstrap.scss";
 import "./assets/shuttle.css";
 import store from "./store";
+import router from "./router";
 
 export default {
   data() {
@@ -9,8 +10,12 @@ export default {
       formOptionsAvailable: false,
       items: [
         {
-          href: "s-title",
-          text: "s-title",
+          to: "s-alerts",
+          text: "Alerts"
+        },
+        {
+          to: "s-title",
+          text: "Title"
         },
       ],
     };
@@ -21,18 +26,9 @@ export default {
     },
   },
   methods: {
-    addAlert() {
-      store.dispatch("addAlert", {
-        message: `This alert was added @ ${new Date()}`,
-        type: "info",
-      });
-    },
     removeAlert(alert) {
       this.$store.commit("REMOVE_ALERT", alert);
     },
-  },
-  mounted() {
-    router.push("dashboard");
   },
 };
 </script>
@@ -43,7 +39,7 @@ export default {
       <b-sidebar id="sidebar-backdrop" backdrop-variant="dark" backdrop shadow></b-sidebar>
     </div>
     <b-navbar toggleable="lg" fixed="top" type="dark">
-      <b-navbar-brand href="dashboard">
+      <b-navbar-brand to="dashboard">
         <img src="./assets/logo-small.png" alt="Shuttle-Vue logo" />
         ShuttleVue
       </b-navbar-brand>
@@ -58,16 +54,17 @@ export default {
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-    <s-alerts :alerts="alerts" v-on:removed="removeAlert" />
     <div class="container-fluid mt-2">
       <div class="row row-offcanvas row-offcanvas-left">
-        <div id="application-content" class="main col-sm-12 col-md-12">
+        <div class="col-md-2 .d-sm-none .d-md-block" />
+        <div id="application-content" class="main col-sm-12 col-md-8">
+          <s-alerts :alerts="alerts" v-on:removed="removeAlert" />
           <router-view></router-view>
-          <b-button @click="addAlert">Add Alert</b-button>
         </div>
+        <div class="col-md-2 .d-sm-none .d-md-block" />
       </div>
     </div>
-    <footer class="footer text-muted">
+    <footer class="footer p-1">
       <div class="container-fluid text-center">
         <div class="d-none d-xl-block font-weight-bold">X-LARGE (XL)</div>
         <div class="d-none d-lg-block d-xl-none font-weight-bold">LARGE (LG)</div>

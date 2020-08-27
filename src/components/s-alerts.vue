@@ -1,5 +1,5 @@
 <template>
-  <div v-if="alerts" class="m-2">
+  <div v-if="alerts" class="s-alerta">
     <b-alert
       v-for="alert in alerts"
       :key="alert.name"
