@@ -1,6 +1,6 @@
 <script>
 export default {
-    name: 'STitle', // vue component name
+    name: 'STitle',
     props: {
         text: String
     }
