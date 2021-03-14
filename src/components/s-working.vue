@@ -2,10 +2,12 @@
 export default {
   name: "SWorking",
   props: {
-    icon: String
+    icon: String,
+    text: String,
+    textClass: String,
   },
   computed: {
-    iconClass() {
+    computeIconClass() {
       return this.icon ? this.icon : "fa-spin fa-4x";
     },
   },
@@ -14,6 +16,7 @@ export default {
 
 <template>
   <div class="s-working">
-    <font-awesome-icon icon="circle-notch" :class="iconClass" />
+    <div :class="textClass" v-if="text">{{ text }}</div>
+    <font-awesome-icon icon="circle-notch" :class="computeIconClass" />
   </div>
 </template>

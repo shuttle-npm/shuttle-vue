@@ -138,13 +138,19 @@ function _nonIterableRest() {
       }
 
       var type = alert.type || 'info';
-      expiryDate.setSeconds(expiryDate.getSeconds() + 10);
+      alert.expire = alert.expire != undefined ? alert.expire : true;
+
+      if (alert.expire) {
+        expiryDate.setSeconds(expiryDate.getSeconds() + 10);
+      }
+
       var message = {
         message: alert.message,
         type: type,
         mode: mode,
         key: key,
         name: alert.name,
+        expire: alert.expire,
         expiryDate: expiryDate
       };
       this.messages.push(message);
@@ -161,7 +167,7 @@ function _nonIterableRest() {
       }
 
       this.messages = this.messages.filter(function (message) {
-        return message.expiryDate && message.expiryDate < date ? undefined : message;
+        return message.expire && message.expiryDate && message.expiryDate < date ? undefined : message;
       });
       setTimeout(function () {
         self._removeExpiredAlerts();
@@ -193,7 +199,7 @@ function _nonIterableRest() {
 //
 //
 //
-var script = {
+var script$3 = {
   props: {
     alerts: Array
   },
@@ -276,10 +282,10 @@ var script = {
     }
     return script;
 }/* script */
-var __vue_script__ = script;
+var __vue_script__$3 = script$3;
 /* template */
 
-var __vue_render__ = function __vue_render__() {
+var __vue_render__$3 = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
@@ -316,29 +322,29 @@ var __vue_render__ = function __vue_render__() {
   }), 1) : _vm._e();
 };
 
-var __vue_staticRenderFns__ = [];
+var __vue_staticRenderFns__$3 = [];
 /* style */
 
-var __vue_inject_styles__ = undefined;
+var __vue_inject_styles__$3 = undefined;
 /* scoped */
 
-var __vue_scope_id__ = undefined;
+var __vue_scope_id__$3 = undefined;
 /* module identifier */
 
-var __vue_module_identifier__ = "data-v-7f0f30f6";
+var __vue_module_identifier__$3 = "data-v-7f0f30f6";
 /* functional template */
 
-var __vue_is_functional_template__ = false;
+var __vue_is_functional_template__$3 = false;
 /* style inject */
 
 /* style inject SSR */
 
 /* style inject shadow dom */
 
-var __vue_component__ = /*#__PURE__*/normalizeComponent({
-  render: __vue_render__,
-  staticRenderFns: __vue_staticRenderFns__
-}, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, false, undefined, undefined, undefined);var script$1 = {
+var __vue_component__$3 = /*#__PURE__*/normalizeComponent({
+  render: __vue_render__$3,
+  staticRenderFns: __vue_staticRenderFns__$3
+}, __vue_inject_styles__$3, __vue_script__$3, __vue_scope_id__$3, __vue_is_functional_template__$3, __vue_module_identifier__$3, false, undefined, undefined, undefined);var script$2 = {
   name: "SNavbarDropdown",
   props: {
     text: String,
@@ -347,10 +353,10 @@ var __vue_component__ = /*#__PURE__*/normalizeComponent({
     items: Array
   }
 };/* script */
-var __vue_script__$1 = script$1;
+var __vue_script__$2 = script$2;
 /* template */
 
-var __vue_render__$1 = function __vue_render__() {
+var __vue_render__$2 = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
@@ -378,50 +384,6 @@ var __vue_render__$1 = function __vue_render__() {
   }), 1)], 1);
 };
 
-var __vue_staticRenderFns__$1 = [];
-/* style */
-
-var __vue_inject_styles__$1 = undefined;
-/* scoped */
-
-var __vue_scope_id__$1 = undefined;
-/* module identifier */
-
-var __vue_module_identifier__$1 = "data-v-646ddb76";
-/* functional template */
-
-var __vue_is_functional_template__$1 = false;
-/* style inject */
-
-/* style inject SSR */
-
-/* style inject shadow dom */
-
-var __vue_component__$1 = /*#__PURE__*/normalizeComponent({
-  render: __vue_render__$1,
-  staticRenderFns: __vue_staticRenderFns__$1
-}, __vue_inject_styles__$1, __vue_script__$1, __vue_scope_id__$1, __vue_is_functional_template__$1, __vue_module_identifier__$1, false, undefined, undefined, undefined);var script$2 = {
-  name: 'STitle',
-  // vue component name
-  props: {
-    text: String
-  }
-};/* script */
-var __vue_script__$2 = script$2;
-/* template */
-
-var __vue_render__$2 = function __vue_render__() {
-  var _vm = this;
-
-  var _h = _vm.$createElement;
-
-  var _c = _vm._self._c || _h;
-
-  return _c('div', {
-    staticClass: "s-title"
-  }, [_vm._ssrNode("<h1>" + _vm._ssrEscape("\n        " + _vm._s(_vm.text) + "\n    ") + "</h1>")]);
-};
-
 var __vue_staticRenderFns__$2 = [];
 /* style */
 
@@ -431,7 +393,7 @@ var __vue_inject_styles__$2 = undefined;
 var __vue_scope_id__$2 = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$2 = "data-v-b20061ba";
+var __vue_module_identifier__$2 = "data-v-646ddb76";
 /* functional template */
 
 var __vue_is_functional_template__$2 = false;
@@ -444,7 +406,105 @@ var __vue_is_functional_template__$2 = false;
 var __vue_component__$2 = /*#__PURE__*/normalizeComponent({
   render: __vue_render__$2,
   staticRenderFns: __vue_staticRenderFns__$2
-}, __vue_inject_styles__$2, __vue_script__$2, __vue_scope_id__$2, __vue_is_functional_template__$2, __vue_module_identifier__$2, false, undefined, undefined, undefined);/* eslint-disable import/prefer-default-export */var components=/*#__PURE__*/Object.freeze({__proto__:null,Alerts: Alerts,SAlerts: __vue_component__,SNavbarDropdown: __vue_component__$1,STitle: __vue_component__$2});var install = function installShuttleVue(Vue) {
+}, __vue_inject_styles__$2, __vue_script__$2, __vue_scope_id__$2, __vue_is_functional_template__$2, __vue_module_identifier__$2, false, undefined, undefined, undefined);var script$1 = {
+  name: 'STitle',
+  props: {
+    text: String
+  }
+};/* script */
+var __vue_script__$1 = script$1;
+/* template */
+
+var __vue_render__$1 = function __vue_render__() {
+  var _vm = this;
+
+  var _h = _vm.$createElement;
+
+  var _c = _vm._self._c || _h;
+
+  return _c('div', {
+    staticClass: "s-title"
+  }, [_vm._ssrNode("<h1>" + _vm._ssrEscape("\n        " + _vm._s(_vm.text) + "\n    ") + "</h1>")]);
+};
+
+var __vue_staticRenderFns__$1 = [];
+/* style */
+
+var __vue_inject_styles__$1 = undefined;
+/* scoped */
+
+var __vue_scope_id__$1 = undefined;
+/* module identifier */
+
+var __vue_module_identifier__$1 = "data-v-6ae1baaa";
+/* functional template */
+
+var __vue_is_functional_template__$1 = false;
+/* style inject */
+
+/* style inject SSR */
+
+/* style inject shadow dom */
+
+var __vue_component__$1 = /*#__PURE__*/normalizeComponent({
+  render: __vue_render__$1,
+  staticRenderFns: __vue_staticRenderFns__$1
+}, __vue_inject_styles__$1, __vue_script__$1, __vue_scope_id__$1, __vue_is_functional_template__$1, __vue_module_identifier__$1, false, undefined, undefined, undefined);var script = {
+  name: "SWorking",
+  props: {
+    icon: String,
+    text: String,
+    textClass: String
+  },
+  computed: {
+    computeIconClass: function computeIconClass() {
+      return this.icon ? this.icon : "fa-spin fa-4x";
+    }
+  }
+};/* script */
+var __vue_script__ = script;
+/* template */
+
+var __vue_render__ = function __vue_render__() {
+  var _vm = this;
+
+  var _h = _vm.$createElement;
+
+  var _c = _vm._self._c || _h;
+
+  return _c('div', {
+    staticClass: "s-working"
+  }, [_vm._ssrNode((_vm.text ? "<div" + _vm._ssrClass(null, _vm.textClass) + ">" + _vm._ssrEscape(_vm._s(_vm.text)) + "</div>" : "<!---->") + " "), _c('font-awesome-icon', {
+    class: _vm.computeIconClass,
+    attrs: {
+      "icon": "circle-notch"
+    }
+  })], 2);
+};
+
+var __vue_staticRenderFns__ = [];
+/* style */
+
+var __vue_inject_styles__ = undefined;
+/* scoped */
+
+var __vue_scope_id__ = undefined;
+/* module identifier */
+
+var __vue_module_identifier__ = "data-v-6a667fa6";
+/* functional template */
+
+var __vue_is_functional_template__ = false;
+/* style inject */
+
+/* style inject SSR */
+
+/* style inject shadow dom */
+
+var __vue_component__ = /*#__PURE__*/normalizeComponent({
+  render: __vue_render__,
+  staticRenderFns: __vue_staticRenderFns__
+}, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, false, undefined, undefined, undefined);var components=/*#__PURE__*/Object.freeze({__proto__:null,Alerts: Alerts,SAlerts: __vue_component__$3,SNavbarDropdown: __vue_component__$2,STitle: __vue_component__$1,SWorking: __vue_component__});var install = function installShuttleVue(Vue) {
   if (install.installed) return;
   install.installed = true;
   Object.entries(components).forEach(function (_ref) {
@@ -477,4 +537,4 @@ var plugin = {
     GlobalVue.use(plugin);
   }
 } // Default export is library as a whole, registered via Vue.use()
-exports.Alerts=Alerts;exports.SAlerts=__vue_component__;exports.SNavbarDropdown=__vue_component__$1;exports.STitle=__vue_component__$2;exports.default=plugin;
+exports.Alerts=Alerts;exports.SAlerts=__vue_component__$3;exports.SNavbarDropdown=__vue_component__$2;exports.STitle=__vue_component__$1;exports.SWorking=__vue_component__;exports.default=plugin;

@@ -23,6 +23,11 @@ const router = new Router({
             name: 's-title',
             component: () => import(/* webpackChunkName: "s-title" */ './views/s-title.vue')
         },
+        {
+            path: '/s-working',
+            name: 's-working',
+            component: () => import(/* webpackChunkName: "s-working" */ './views/s-working.vue')
+        },
     ]
 })
 

@@ -55,13 +55,19 @@ class Alerts {
     }
 
     var type = alert.type || 'info';
-    expiryDate.setSeconds(expiryDate.getSeconds() + 10);
+    alert.expire = alert.expire != undefined ? alert.expire : true;
+
+    if (alert.expire) {
+      expiryDate.setSeconds(expiryDate.getSeconds() + 10);
+    }
+
     const message = {
       message: alert.message,
       type: type,
       mode: mode,
       key: key,
       name: alert.name,
+      expire: alert.expire,
       expiryDate: expiryDate
     };
     this.messages.push(message);
@@ -77,7 +83,7 @@ class Alerts {
     }
 
     this.messages = this.messages.filter(function (message) {
-      return message.expiryDate && message.expiryDate < date ? undefined : message;
+      return message.expire && message.expiryDate && message.expiryDate < date ? undefined : message;
     });
     setTimeout(function () {
       self._removeExpiredAlerts();
@@ -109,7 +115,7 @@ class Alerts {
 //
 //
 //
-var script = {
+var script$3 = {
   props: {
     alerts: Array
   },
@@ -197,10 +203,10 @@ function normalizeComponent(template, style, script, scopeId, isFunctionalTempla
 }
 
 /* script */
-const __vue_script__ = script;
+const __vue_script__$3 = script$3;
 /* template */
 
-var __vue_render__ = function () {
+var __vue_render__$3 = function () {
   var _vm = this;
 
   var _h = _vm.$createElement;
@@ -237,31 +243,31 @@ var __vue_render__ = function () {
   }), 1) : _vm._e();
 };
 
-var __vue_staticRenderFns__ = [];
+var __vue_staticRenderFns__$3 = [];
 /* style */
 
-const __vue_inject_styles__ = undefined;
+const __vue_inject_styles__$3 = undefined;
 /* scoped */
 
-const __vue_scope_id__ = undefined;
+const __vue_scope_id__$3 = undefined;
 /* module identifier */
 
-const __vue_module_identifier__ = undefined;
+const __vue_module_identifier__$3 = undefined;
 /* functional template */
 
-const __vue_is_functional_template__ = false;
+const __vue_is_functional_template__$3 = false;
 /* style inject */
 
 /* style inject SSR */
 
 /* style inject shadow dom */
 
-const __vue_component__ = /*#__PURE__*/normalizeComponent({
-  render: __vue_render__,
-  staticRenderFns: __vue_staticRenderFns__
-}, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, false, undefined, undefined, undefined);
+const __vue_component__$3 = /*#__PURE__*/normalizeComponent({
+  render: __vue_render__$3,
+  staticRenderFns: __vue_staticRenderFns__$3
+}, __vue_inject_styles__$3, __vue_script__$3, __vue_scope_id__$3, __vue_is_functional_template__$3, __vue_module_identifier__$3, false, undefined, undefined, undefined);
 
-var script$1 = {
+var script$2 = {
   name: "SNavbarDropdown",
   props: {
     text: String,
@@ -272,10 +278,10 @@ var script$1 = {
 };
 
 /* script */
-const __vue_script__$1 = script$1;
+const __vue_script__$2 = script$2;
 /* template */
 
-var __vue_render__$1 = function () {
+var __vue_render__$2 = function () {
   var _vm = this;
 
   var _h = _vm.$createElement;
@@ -303,54 +309,6 @@ var __vue_render__$1 = function () {
   }), 1)], 1);
 };
 
-var __vue_staticRenderFns__$1 = [];
-/* style */
-
-const __vue_inject_styles__$1 = undefined;
-/* scoped */
-
-const __vue_scope_id__$1 = undefined;
-/* module identifier */
-
-const __vue_module_identifier__$1 = undefined;
-/* functional template */
-
-const __vue_is_functional_template__$1 = false;
-/* style inject */
-
-/* style inject SSR */
-
-/* style inject shadow dom */
-
-const __vue_component__$1 = /*#__PURE__*/normalizeComponent({
-  render: __vue_render__$1,
-  staticRenderFns: __vue_staticRenderFns__$1
-}, __vue_inject_styles__$1, __vue_script__$1, __vue_scope_id__$1, __vue_is_functional_template__$1, __vue_module_identifier__$1, false, undefined, undefined, undefined);
-
-var script$2 = {
-  name: 'STitle',
-  // vue component name
-  props: {
-    text: String
-  }
-};
-
-/* script */
-const __vue_script__$2 = script$2;
-/* template */
-
-var __vue_render__$2 = function () {
-  var _vm = this;
-
-  var _h = _vm.$createElement;
-
-  var _c = _vm._self._c || _h;
-
-  return _c('div', {
-    staticClass: "s-title"
-  }, [_c('h1', [_vm._v("\n        " + _vm._s(_vm.text) + "\n    ")])]);
-};
-
 var __vue_staticRenderFns__$2 = [];
 /* style */
 
@@ -375,14 +333,122 @@ const __vue_component__$2 = /*#__PURE__*/normalizeComponent({
   staticRenderFns: __vue_staticRenderFns__$2
 }, __vue_inject_styles__$2, __vue_script__$2, __vue_scope_id__$2, __vue_is_functional_template__$2, __vue_module_identifier__$2, false, undefined, undefined, undefined);
 
-/* eslint-disable import/prefer-default-export */
+var script$1 = {
+  name: 'STitle',
+  props: {
+    text: String
+  }
+};
+
+/* script */
+const __vue_script__$1 = script$1;
+/* template */
+
+var __vue_render__$1 = function () {
+  var _vm = this;
+
+  var _h = _vm.$createElement;
+
+  var _c = _vm._self._c || _h;
+
+  return _c('div', {
+    staticClass: "s-title"
+  }, [_c('h1', [_vm._v("\n        " + _vm._s(_vm.text) + "\n    ")])]);
+};
+
+var __vue_staticRenderFns__$1 = [];
+/* style */
+
+const __vue_inject_styles__$1 = undefined;
+/* scoped */
+
+const __vue_scope_id__$1 = undefined;
+/* module identifier */
+
+const __vue_module_identifier__$1 = undefined;
+/* functional template */
+
+const __vue_is_functional_template__$1 = false;
+/* style inject */
+
+/* style inject SSR */
+
+/* style inject shadow dom */
+
+const __vue_component__$1 = /*#__PURE__*/normalizeComponent({
+  render: __vue_render__$1,
+  staticRenderFns: __vue_staticRenderFns__$1
+}, __vue_inject_styles__$1, __vue_script__$1, __vue_scope_id__$1, __vue_is_functional_template__$1, __vue_module_identifier__$1, false, undefined, undefined, undefined);
+
+var script = {
+  name: "SWorking",
+  props: {
+    icon: String,
+    text: String,
+    textClass: String
+  },
+  computed: {
+    computeIconClass() {
+      return this.icon ? this.icon : "fa-spin fa-4x";
+    }
+
+  }
+};
+
+/* script */
+const __vue_script__ = script;
+/* template */
+
+var __vue_render__ = function () {
+  var _vm = this;
+
+  var _h = _vm.$createElement;
+
+  var _c = _vm._self._c || _h;
+
+  return _c('div', {
+    staticClass: "s-working"
+  }, [_vm.text ? _c('div', {
+    class: _vm.textClass
+  }, [_vm._v(_vm._s(_vm.text))]) : _vm._e(), _vm._v(" "), _c('font-awesome-icon', {
+    class: _vm.computeIconClass,
+    attrs: {
+      "icon": "circle-notch"
+    }
+  })], 1);
+};
+
+var __vue_staticRenderFns__ = [];
+/* style */
+
+const __vue_inject_styles__ = undefined;
+/* scoped */
+
+const __vue_scope_id__ = undefined;
+/* module identifier */
+
+const __vue_module_identifier__ = undefined;
+/* functional template */
+
+const __vue_is_functional_template__ = false;
+/* style inject */
+
+/* style inject SSR */
+
+/* style inject shadow dom */
+
+const __vue_component__ = /*#__PURE__*/normalizeComponent({
+  render: __vue_render__,
+  staticRenderFns: __vue_staticRenderFns__
+}, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, false, undefined, undefined, undefined);
 
 var components = /*#__PURE__*/Object.freeze({
     __proto__: null,
     Alerts: Alerts,
-    SAlerts: __vue_component__,
-    SNavbarDropdown: __vue_component__$1,
-    STitle: __vue_component__$2
+    SAlerts: __vue_component__$3,
+    SNavbarDropdown: __vue_component__$2,
+    STitle: __vue_component__$1,
+    SWorking: __vue_component__
 });
 
 // Import vue components
@@ -401,4 +467,4 @@ const plugin = {
 }; // To auto-install on non-es builds, when vue is found
 
 export default plugin;
-export { Alerts, __vue_component__ as SAlerts, __vue_component__$1 as SNavbarDropdown, __vue_component__$2 as STitle };
+export { Alerts, __vue_component__$3 as SAlerts, __vue_component__$2 as SNavbarDropdown, __vue_component__$1 as STitle, __vue_component__ as SWorking };

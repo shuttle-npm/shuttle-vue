@@ -17,6 +17,10 @@ export default {
           to: "s-title",
           text: "Title"
         },
+        {
+          to: "s-working",
+          text: "Working"
+        },
       ],
     };
   },

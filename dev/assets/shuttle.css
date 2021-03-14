@@ -41,3 +41,13 @@ body {
     padding: .5rem 1rem;
     border-right: solid 5px #823600!important
 }
+
+.s-working {
+    padding: 3em;
+    text-align: center;
+}
+
+.s-working div {
+    font-size: 3em;
+    margin-bottom: 1em;
+}

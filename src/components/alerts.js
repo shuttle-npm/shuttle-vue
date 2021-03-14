@@ -50,15 +50,23 @@ export default class Alerts {
             return;
         }
         var type = alert.type || 'info';
-        expiryDate.setSeconds(expiryDate.getSeconds() + 10);
+
+        alert.expire = (alert.expire != undefined ? alert.expire : true);
+
+        if (alert.expire) {
+            expiryDate.setSeconds(expiryDate.getSeconds() + 10);
+        }
+
         const message = {
             message: alert.message,
             type: type,
             mode: mode,
             key: key,
             name: alert.name,
+            expire: alert.expire,
             expiryDate: expiryDate
         };
+
         this.messages.push(message);
         this._key = key;
     }
@@ -72,11 +80,10 @@ export default class Alerts {
         }
 
         this.messages = this.messages.filter(function (message) {
-            return (message.expiryDate &&
-                message.expiryDate < date) ? undefined : message;
+            return (message.expire && message.expiryDate && message.expiryDate < date) ? undefined : message;
         });
 
-        setTimeout(function() {
+        setTimeout(function () {
             self._removeExpiredAlerts();
         }, 500);
     }

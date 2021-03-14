@@ -8,7 +8,10 @@ import store from './store'
 import router from './router'
 import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faCircleNotch);
 
 Vue.use(BootstrapVue);
 Vue.use(ShuttleVue);
