@@ -267,12 +267,21 @@ const __vue_component__$3 = /*#__PURE__*/normalizeComponent({
   staticRenderFns: __vue_staticRenderFns__$3
 }, __vue_inject_styles__$3, __vue_script__$3, __vue_scope_id__$3, __vue_is_functional_template__$3, __vue_module_identifier__$3, false, undefined, undefined, undefined);
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var script$2 = {
-  name: "SNavbarDropdown",
   props: {
-    text: String,
-    href: String,
     to: String,
+    text: String,
     items: Array
   }
 };
@@ -288,25 +297,22 @@ var __vue_render__$2 = function () {
 
   var _c = _vm._self._c || _h;
 
-  return _c('div', [!!_vm.href || !!_vm.to ? _c('b-nav-item', {
+  return _c('b-navbar-nav', [_vm.to ? _c('b-nav-item', {
     attrs: {
-      "href": !!_vm.href ? _vm.href : undefined,
-      "to": !!_vm.to ? _vm.to : undefined
+      "to": _vm.to
     }
-  }, [_vm._v(_vm._s(_vm.text))]) : _c('b-nav-item-dropdown', {
+  }, [_vm._v(_vm._s(_vm.text))]) : _vm.items ? _c('b-nav-item-dropdown', {
     attrs: {
-      "text": _vm.text,
-      "right": ""
+      "text": _vm.text
     }
   }, _vm._l(_vm.items, function (item) {
     return _c('b-dropdown-item', {
-      key: item.name,
+      key: item.href,
       attrs: {
-        "href": !!item.href ? item.href : undefined,
-        "to": !!item.to ? item.to : undefined
+        "to": item.to
       }
     }, [_vm._v(_vm._s(item.text))]);
-  }), 1)], 1);
+  }), 1) : _vm._e()], 1);
 };
 
 var __vue_staticRenderFns__$2 = [];
