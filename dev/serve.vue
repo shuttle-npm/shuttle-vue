@@ -1,27 +1,13 @@
 <script>
 import "./assets/bootstrap.scss";
 import "./assets/shuttle.css";
-import store from "./store";
-import router from "./router";
+import map from "./navigation-map";
 
 export default {
   data() {
     return {
       formOptionsAvailable: false,
-      items: [
-        {
-          to: "s-alerts",
-          text: "Alerts"
-        },
-        {
-          to: "s-title",
-          text: "Title"
-        },
-        {
-          to: "s-working",
-          text: "Working"
-        },
-      ],
+      resources: [],
     };
   },
   computed: {
@@ -34,13 +20,31 @@ export default {
       this.$store.commit("REMOVE_ALERT", alert);
     },
   },
+  mounted() {
+    const result = [];
+
+    map.forEach((item) => {
+      result.push({
+        text: item.text,
+        to: item.to || "",
+        items: item.items || [],
+      });
+    });
+
+    this.resources = result;
+  },
 };
 </script>
 
 <template>
   <div id="app">
     <div>
-      <b-sidebar id="sidebar-backdrop" backdrop-variant="dark" backdrop shadow></b-sidebar>
+      <b-sidebar
+        id="sidebar-backdrop"
+        backdrop-variant="dark"
+        backdrop
+        shadow
+      ></b-sidebar>
     </div>
     <b-navbar toggleable="lg" fixed="top" type="dark">
       <b-navbar-brand to="dashboard">
@@ -53,9 +57,13 @@ export default {
             <font-awesome-icon icon="angle-double-right" />
           </b-nav-item>
         </b-navbar-nav>
-        <b-navbar-nav>
-          <s-navbar-dropdown text="Samples" :items="items" />
-        </b-navbar-nav>
+        <s-navbar-dropdown
+          v-for="item in resources"
+          :key="item.text"
+          :text="item.text"
+          :to="item.to"
+          :items="item.items"
+        />
       </b-collapse>
     </b-navbar>
     <div class="container-fluid mt-2">
@@ -71,10 +79,18 @@ export default {
     <footer class="footer p-1">
       <div class="container-fluid text-center">
         <div class="d-none d-xl-block font-weight-bold">X-LARGE (XL)</div>
-        <div class="d-none d-lg-block d-xl-none font-weight-bold">LARGE (LG)</div>
-        <div class="d-none d-md-block d-lg-none font-weight-bold">MEDIUM (M)</div>
-        <div class="d-none d-sm-block d-md-none font-weight-bold">SMALL (SM)</div>
-        <div class="d-block d-sm-none alert font-weight-bold">X-SMALL (Default)</div>
+        <div class="d-none d-lg-block d-xl-none font-weight-bold">
+          LARGE (LG)
+        </div>
+        <div class="d-none d-md-block d-lg-none font-weight-bold">
+          MEDIUM (M)
+        </div>
+        <div class="d-none d-sm-block d-md-none font-weight-bold">
+          SMALL (SM)
+        </div>
+        <div class="d-block d-sm-none alert font-weight-bold">
+          X-SMALL (Default)
+        </div>
         <p class="m-0">Copyright (c) 2020 Shuttle</p>
       </div>
     </footer>
