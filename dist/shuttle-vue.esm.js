@@ -115,7 +115,7 @@ class Alerts {
 //
 //
 //
-var script$3 = {
+var script$4 = {
   props: {
     alerts: Array
   },
@@ -203,10 +203,10 @@ function normalizeComponent(template, style, script, scopeId, isFunctionalTempla
 }
 
 /* script */
-const __vue_script__$3 = script$3;
+const __vue_script__$4 = script$4;
 /* template */
 
-var __vue_render__$3 = function () {
+var __vue_render__$4 = function () {
   var _vm = this;
 
   var _h = _vm.$createElement;
@@ -241,6 +241,103 @@ var __vue_render__$3 = function () {
       }
     }, [_vm._v("×")])]), _vm._v("\n    " + _vm._s(alert.message) + "\n  ")]);
   }), 1) : _vm._e();
+};
+
+var __vue_staticRenderFns__$4 = [];
+/* style */
+
+const __vue_inject_styles__$4 = undefined;
+/* scoped */
+
+const __vue_scope_id__$4 = undefined;
+/* module identifier */
+
+const __vue_module_identifier__$4 = undefined;
+/* functional template */
+
+const __vue_is_functional_template__$4 = false;
+/* style inject */
+
+/* style inject SSR */
+
+/* style inject shadow dom */
+
+const __vue_component__$4 = /*#__PURE__*/normalizeComponent({
+  render: __vue_render__$4,
+  staticRenderFns: __vue_staticRenderFns__$4
+}, __vue_inject_styles__$4, __vue_script__$4, __vue_scope_id__$4, __vue_is_functional_template__$4, __vue_module_identifier__$4, false, undefined, undefined, undefined);
+
+var script$3 = {
+  name: "SColumn",
+  props: {
+    type: String,
+    size: Number
+  },
+  computed: {
+    classes: function () {
+      const renderType = (this.type || "sm").toLowerCase();
+      var renderSize = this.size || 8;
+
+      if (renderSize > 12) {
+        renderSize = 12;
+      } else if (renderSize < 5) {
+        renderSize = 5;
+      }
+
+      switch (renderType) {
+        case "lg":
+          {
+            renderSize = renderSize - 1;
+            break;
+          }
+
+        case "md":
+          {
+            renderSize = renderSize - 2;
+            break;
+          }
+
+        case "sm":
+          {
+            renderSize = renderSize - 3;
+            break;
+          }
+
+        case "xs":
+          {
+            renderSize = renderSize - 4;
+            break;
+          }
+      }
+
+      return `col-xl-${renderSize} col-lg-${renderSize + 1} col-md-${renderSize + 2} mx-auto`;
+    }
+  }
+};
+
+/* script */
+const __vue_script__$3 = script$3;
+/* template */
+
+var __vue_render__$3 = function () {
+  var _vm = this;
+
+  var _h = _vm.$createElement;
+
+  var _c = _vm._self._c || _h;
+
+  return _c('div', {
+    staticClass: "container-fluid"
+  }, [_c('div', {
+    staticClass: "s-column row"
+  }, [_c('div', {
+    staticClass: "col d-sm-none d-md-block"
+  }), _vm._v(" "), _c('div', {
+    staticClass: "p-0",
+    class: [_vm.classes]
+  }, [_vm._t("default")], 2), _vm._v(" "), _c('div', {
+    staticClass: "col d-sm-none d-md-block"
+  })])]);
 };
 
 var __vue_staticRenderFns__$3 = [];
@@ -451,7 +548,8 @@ const __vue_component__ = /*#__PURE__*/normalizeComponent({
 var components = /*#__PURE__*/Object.freeze({
     __proto__: null,
     Alerts: Alerts,
-    SAlerts: __vue_component__$3,
+    SAlerts: __vue_component__$4,
+    SColumn: __vue_component__$3,
     SNavbarDropdown: __vue_component__$2,
     STitle: __vue_component__$1,
     SWorking: __vue_component__
@@ -473,4 +571,4 @@ const plugin = {
 }; // To auto-install on non-es builds, when vue is found
 
 export default plugin;
-export { Alerts, __vue_component__$3 as SAlerts, __vue_component__$2 as SNavbarDropdown, __vue_component__$1 as STitle, __vue_component__ as SWorking };
+export { Alerts, __vue_component__$4 as SAlerts, __vue_component__$3 as SColumn, __vue_component__$2 as SNavbarDropdown, __vue_component__$1 as STitle, __vue_component__ as SWorking };

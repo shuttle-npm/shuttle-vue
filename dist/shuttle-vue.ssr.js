@@ -202,7 +202,7 @@ function _nonIterableRest() {
 //
 //
 //
-var script$3 = {
+var script$4 = {
   props: {
     alerts: Array
   },
@@ -285,10 +285,10 @@ var script$3 = {
     }
     return script;
 }/* script */
-var __vue_script__$3 = script$3;
+var __vue_script__$4 = script$4;
 /* template */
 
-var __vue_render__$3 = function __vue_render__() {
+var __vue_render__$4 = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
@@ -325,6 +325,90 @@ var __vue_render__$3 = function __vue_render__() {
   }), 1) : _vm._e();
 };
 
+var __vue_staticRenderFns__$4 = [];
+/* style */
+
+var __vue_inject_styles__$4 = undefined;
+/* scoped */
+
+var __vue_scope_id__$4 = undefined;
+/* module identifier */
+
+var __vue_module_identifier__$4 = "data-v-7f0f30f6";
+/* functional template */
+
+var __vue_is_functional_template__$4 = false;
+/* style inject */
+
+/* style inject SSR */
+
+/* style inject shadow dom */
+
+var __vue_component__$4 = /*#__PURE__*/normalizeComponent({
+  render: __vue_render__$4,
+  staticRenderFns: __vue_staticRenderFns__$4
+}, __vue_inject_styles__$4, __vue_script__$4, __vue_scope_id__$4, __vue_is_functional_template__$4, __vue_module_identifier__$4, false, undefined, undefined, undefined);var script$3 = {
+  name: "SColumn",
+  props: {
+    type: String,
+    size: Number
+  },
+  computed: {
+    classes: function classes() {
+      var renderType = (this.type || "sm").toLowerCase();
+      var renderSize = this.size || 8;
+
+      if (renderSize > 12) {
+        renderSize = 12;
+      } else if (renderSize < 5) {
+        renderSize = 5;
+      }
+
+      switch (renderType) {
+        case "lg":
+          {
+            renderSize = renderSize - 1;
+            break;
+          }
+
+        case "md":
+          {
+            renderSize = renderSize - 2;
+            break;
+          }
+
+        case "sm":
+          {
+            renderSize = renderSize - 3;
+            break;
+          }
+
+        case "xs":
+          {
+            renderSize = renderSize - 4;
+            break;
+          }
+      }
+
+      return "col-xl-".concat(renderSize, " col-lg-").concat(renderSize + 1, " col-md-").concat(renderSize + 2, " mx-auto");
+    }
+  }
+};/* script */
+var __vue_script__$3 = script$3;
+/* template */
+
+var __vue_render__$3 = function __vue_render__() {
+  var _vm = this;
+
+  var _h = _vm.$createElement;
+
+  var _c = _vm._self._c || _h;
+
+  return _c('div', {
+    staticClass: "container-fluid"
+  }, [_vm._ssrNode("<div class=\"s-column row\">", "</div>", [_vm._ssrNode("<div class=\"col d-sm-none d-md-block\"></div> "), _vm._ssrNode("<div" + _vm._ssrClass("p-0", [_vm.classes]) + ">", "</div>", [_vm._t("default")], 2), _vm._ssrNode(" <div class=\"col d-sm-none d-md-block\"></div>")], 2)]);
+};
+
 var __vue_staticRenderFns__$3 = [];
 /* style */
 
@@ -334,7 +418,7 @@ var __vue_inject_styles__$3 = undefined;
 var __vue_scope_id__$3 = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$3 = "data-v-7f0f30f6";
+var __vue_module_identifier__$3 = "data-v-37e6c99f";
 /* functional template */
 
 var __vue_is_functional_template__$3 = false;
@@ -513,7 +597,7 @@ var __vue_is_functional_template__ = false;
 var __vue_component__ = /*#__PURE__*/normalizeComponent({
   render: __vue_render__,
   staticRenderFns: __vue_staticRenderFns__
-}, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, false, undefined, undefined, undefined);var components=/*#__PURE__*/Object.freeze({__proto__:null,Alerts: Alerts,SAlerts: __vue_component__$3,SNavbarDropdown: __vue_component__$2,STitle: __vue_component__$1,SWorking: __vue_component__});var install = function installShuttleVue(Vue) {
+}, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, false, undefined, undefined, undefined);var components=/*#__PURE__*/Object.freeze({__proto__:null,Alerts: Alerts,SAlerts: __vue_component__$4,SColumn: __vue_component__$3,SNavbarDropdown: __vue_component__$2,STitle: __vue_component__$1,SWorking: __vue_component__});var install = function installShuttleVue(Vue) {
   if (install.installed) return;
   install.installed = true;
   Object.entries(components).forEach(function (_ref) {
@@ -546,4 +630,4 @@ var plugin = {
     GlobalVue.use(plugin);
   }
 } // Default export is library as a whole, registered via Vue.use()
-exports.Alerts=Alerts;exports.SAlerts=__vue_component__$3;exports.SNavbarDropdown=__vue_component__$2;exports.STitle=__vue_component__$1;exports.SWorking=__vue_component__;exports.default=plugin;
+exports.Alerts=Alerts;exports.SAlerts=__vue_component__$4;exports.SColumn=__vue_component__$3;exports.SNavbarDropdown=__vue_component__$2;exports.STitle=__vue_component__$1;exports.SWorking=__vue_component__;exports.default=plugin;

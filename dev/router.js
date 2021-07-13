@@ -19,6 +19,11 @@ const router = new Router({
             component: () => import(/* webpackChunkName: "s-alerts" */ './views/s-alerts.vue')
         },
         {
+            path: '/s-column',
+            name: 's-column',
+            component: () => import(/* webpackChunkName: "s-column" */ './views/s-column.vue')
+        },
+        {
             path: '/s-title',
             name: 's-title',
             component: () => import(/* webpackChunkName: "s-title" */ './views/s-title.vue')

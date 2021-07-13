@@ -18,6 +18,10 @@ var map = [
                 to: "s-working",
                 text: "Working"
             },
+            {
+                to: "s-column",
+                text: "Column"
+            },
         ],
     }
 ];

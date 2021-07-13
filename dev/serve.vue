@@ -37,7 +37,7 @@ export default {
 </script>
 
 <template>
-  <div id="app">
+  <div id="appx">
     <div>
       <b-sidebar
         id="sidebar-backdrop"
@@ -68,12 +68,12 @@ export default {
     </b-navbar>
     <div class="container-fluid mt-2">
       <div class="row row-offcanvas row-offcanvas-left">
-        <div class="col-md-2 .d-sm-none .d-md-block" />
+        <div class="col-md-2 d-sm-none d-md-block" />
         <div id="application-content" class="main col-sm-12 col-md-8">
           <s-alerts :alerts="alerts" v-on:removed="removeAlert" />
           <router-view></router-view>
         </div>
-        <div class="col-md-2 .d-sm-none .d-md-block" />
+        <div class="col-md-2 d-sm-none d-md-block" />
       </div>
     </div>
     <footer class="footer p-1">

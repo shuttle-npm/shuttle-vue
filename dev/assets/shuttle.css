@@ -51,3 +51,7 @@ body {
     font-size: 3em;
     margin-bottom: 1em;
 }
+
+.s-section {
+    border: 1px solid #823600;
+}
